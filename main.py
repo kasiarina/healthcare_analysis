@@ -7,3 +7,10 @@ df = pd.read_excel(
     'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/data-science-in-health-care-basic-statistical-analysis/COVID_19.xlsx',
     'Sheet1')
 print(df.head)
+#function to transform date to datetime
+def parse(x):
+    y = x.split()
+    t = y[1][:8]
+    z=y[0] + " " + t
+    d = datetime.strptime(z, '%Y-%m-%d %H:%M:%S')
+    return d
