@@ -29,3 +29,5 @@ df = df.dropna(subset=['Gender'])
 d = {'No' : False, 'Yes' : True}
 c = 'Do you vaccinated influenza?'
 df.loc[:, c] = df[c].map(d)
+#overview of dataset
+df.info()
