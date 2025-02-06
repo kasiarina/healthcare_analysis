@@ -25,3 +25,7 @@ df = pd.read_excel(
 
 #drop null values for gender column
 df = df.dropna(subset=['Gender'])
+#change yes/no values
+d = {'No' : False, 'Yes' : True}
+c = 'Do you vaccinated influenza?'
+df.loc[:, c] = df[c].map(d)
