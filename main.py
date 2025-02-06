@@ -31,3 +31,6 @@ c = 'Do you vaccinated influenza?'
 df.loc[:, c] = df[c].map(d)
 #overview of dataset
 df.info()
+#change column type
+c = 'Age'
+df.loc[:, c] = df[c].astype('category')
