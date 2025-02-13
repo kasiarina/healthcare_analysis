@@ -43,5 +43,16 @@ df.info()
 c = "Age"
 df.loc[:, c] = df[c].astype("category")
 # Eliminate cyrillic characters
-for c in df.columns[1:-1]:
-    df.loc[:, c] = df[c].apply(lambda x: str(x) if str(x).find('(') == -1 else str(x)[:str(x).find('(')])
+# Ensure df is a copy to avoid modifying a slice
+df = df.copy()
+
+# Process all columns except the last one
+for c in df.columns[:-1]:  # Exclude the last column
+    df.loc[:, c] = df[c].astype(str).apply(lambda x: x.split(" (")[0])  # Remove text inside parentheses
+    df.loc[:, c] = df[c].astype("category")
+
+# Check summary statistics
+df.describe()
+# Include categorical columns
+df.describe(include=['category'])
+
