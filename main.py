@@ -42,3 +42,6 @@ df.info()
 # Change column type
 c = "Age"
 df.loc[:, c] = df[c].astype("category")
+# Eliminate cyrillic characters
+for c in df.columns[1:-1]:
+    df.loc[:, c] = df[c].apply(lambda x : str(x) if str(x).find('(') == -1 else str(x).find('('))
