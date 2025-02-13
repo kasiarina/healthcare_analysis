@@ -1,9 +1,9 @@
-# import necessary libraries
+# Import necessary libraries
 import openpyxl
 import pandas as pd
 from datetime import datetime
 
-# data from repository
+# Load data from repository
 df = pd.read_excel(
     "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/data-science-in-health-care-basic-statistical-analysis/COVID_19.xlsx",
     "Sheet1",
@@ -11,7 +11,7 @@ df = pd.read_excel(
 print(df.head)
 
 
-# function to transform date to datetime
+# Function to transform date to datetime
 def parse(x):
     y = x.split()
     t = y[1][:8]
@@ -20,7 +20,7 @@ def parse(x):
     return d
 
 
-# reload data
+# Reload data
 df = pd.read_excel(
     "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/data-science-in-health-care-basic-statistical-analysis/COVID_19.xlsx",
     "Sheet1",
@@ -30,14 +30,15 @@ df = pd.read_excel(
     date_format=parse,
 )
 
-# drop null values for gender column
+#Data preparation
+# Drop null values for gender column
 df = df.dropna(subset=["Gender"])
-# change yes/no values
+# Change yes/no values
 d = {"No": False, "Yes": True}
 c = "Do you vaccinated influenza?"
 df.loc[:, c] = df[c].map(d)
-# overview of dataset
+# Overview of dataset
 df.info()
-# change column type
+# Change column type
 c = "Age"
 df.loc[:, c] = df[c].astype("category")
