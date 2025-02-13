@@ -47,9 +47,10 @@ df['Age'] = df['Age'].astype('category')
 df = df.copy()
 
 # Process all columns except the last one
-for c in df.columns[:-1]:  # Exclude the last column
-    df.loc[:, c] = df[c].astype(str).apply(lambda x: x.split(" (")[0])  # Remove text inside parentheses
-    df.loc[:, c] = df[c].astype("category")
+for c in df.columns[1:-1]:  # Loop through the appropriate columns
+    # Remove text after the first parenthesis, then convert to category
+    df[c] = df[c].apply(lambda x: str(x).split(" (")[0] if isinstance(x, str) else str(x))
+    df[c] = df[c].astype('category')  # Convert to category
 
 # Check summary statistics
 df.describe()
