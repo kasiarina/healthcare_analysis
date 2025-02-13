@@ -8,7 +8,7 @@ df = pd.read_excel(
     "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/data-science-in-health-care-basic-statistical-analysis/COVID_19.xlsx",
     "Sheet1",
 )
-print(df.head)
+print(df.head())
 
 
 # Function to transform date to datetime
