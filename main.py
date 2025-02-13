@@ -77,3 +77,9 @@ df[df['Gender'] == 'Female ']['Maximum body temperature'].mean()
 df[df['Gender'] == 'Male ']['Maximum body temperature'].mean()
 # Statistics by gender
 df.groupby(['Gender'])['Maximum body temperature'].describe()
+
+# Pivot tables
+# Age group by gender
+pd.crosstab(df['Age'], df['Gender'])
+# Summary information for body temperature by gender and age group
+pd.pivot_table(df, values= 'Maximum body temperature', index= ['Age'], columns=['Gender'], aggfunc='mean', margins=True)
