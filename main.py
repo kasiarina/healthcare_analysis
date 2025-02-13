@@ -27,7 +27,7 @@ df = pd.read_excel(
     na_values="NaN",
     parse_dates=["Date time"],
     index_col=0,
-    date_format=parse,
+    date_parser=parse,
 )
 
 #Data preparation
