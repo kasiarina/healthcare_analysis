@@ -40,8 +40,8 @@ df.loc[:, c] = df[c].map(d)
 # Overview of dataset
 df.info()
 # Change column type
-c = "Age"
-df.loc[:, c] = df[c].astype("category")
+df['Age'] = df['Age'].astype('category')
+
 # Eliminate cyrillic characters
 # Ensure df is a copy to avoid modifying a slice
 df = df.copy()
@@ -63,5 +63,4 @@ df['Age'].value_counts()
 df['Age'].value_counts(normalize=True)
 
 # Sorting values
-df.sort_values(by='Age', 
-        ascending=True)
+df.sort_values(by=['Age', 'Gender'], ascending=[True, False]).head()
