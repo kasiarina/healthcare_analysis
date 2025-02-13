@@ -56,3 +56,12 @@ df.describe()
 # Include categorical columns
 df.describe(include=['category'])
 
+# Statistical analysis
+# Count of unique values
+df['Age'].value_counts()
+# Count of unique values in percentage
+df['Age'].value_counts(normalize=True)
+
+# Sorting values
+df.sort_values(by='Age', 
+        ascending=True)
