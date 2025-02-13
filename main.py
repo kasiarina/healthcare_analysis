@@ -65,3 +65,15 @@ df['Age'].value_counts(normalize=True)
 
 # Sorting values
 df.sort_values(by=['Age', 'Gender'], ascending=[True, False]).head()
+
+# Data transformation
+# Obtain information about gender value counts
+df['Gender'].value_counts()
+# Find unique values
+df['Gender'].value_counts().keys()
+# Average temperature for women
+df[df['Gender'] == 'Female ']['Maximum body temperature'].mean()
+# Average temperature for men
+df[df['Gender'] == 'Male ']['Maximum body temperature'].mean()
+# Statistics by gender
+df.groupby(['Gender'])['Maximum body temperature'].describe()
