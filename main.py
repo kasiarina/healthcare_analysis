@@ -2,6 +2,8 @@
 import openpyxl
 import pandas as pd
 from datetime import datetime
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load data from repository
 df = pd.read_excel(
@@ -83,3 +85,13 @@ df.groupby(['Gender'])['Maximum body temperature'].describe()
 pd.crosstab(df['Age'], df['Gender'])
 # Summary information for body temperature by gender and age group
 pd.pivot_table(df, values= 'Maximum body temperature', index= ['Age'], columns=['Gender'], aggfunc='mean', margins=True)
+
+
+# Data visualization
+# Number of surveyed men and women by age group
+df = df.dropna(subset=['Age', 'Gender']) 
+sns.countplot(x='Age', hue='Gender', data=df)
+
+# Survey dynamic during research
+df_numeric = df.select_dtypes(exclude=['category'])  # Keep only numeric columns
+df_numeric.resample('1D').sum().plot()
