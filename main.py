@@ -100,6 +100,7 @@ df_numeric.resample('1D').sum().plot()
 _, axes = plt.subplots(1, 2, sharey=True, figsize=(16,6))
 
 df_t = df[df['Have you had Covid`19 this year?'] == 'Yes'].dropna(subset=['Maximum body temperature'])
-sns.distplot(df_t['Maximum body temperature'], ax=axes[0])
+sns.displot(df_t['Maximum body temperature'], ax=axes[0])
 df_t = df[df['Have you had Covid`19 this year?'] == 'Maybe'].dropna(subset=['Maximum body temperature'])
-sns.distplot(df_t['Maximum body temperature'], ax=axes[1])
+sns.displot(df_t['Maximum body temperature'], ax=axes[1])
+
