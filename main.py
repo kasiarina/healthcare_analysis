@@ -95,3 +95,11 @@ sns.countplot(x='Age', hue='Gender', data=df)
 # Survey dynamic during research
 df_numeric = df.select_dtypes(exclude=['category'])  # Keep only numeric columns
 df_numeric.resample('1D').sum().plot()
+
+# Temperature distribution of surveyed people that were sure or not sure to have had COVID-19
+_, axes = plt.subplots(1, 2, sharey=True, figsize=(16,6))
+
+df_t = df[df['Have you had Covid`19 this year?'] == 'Yes'].dropna(subset=['Maximum body temperature'])
+sns.distplot(df_t['Maximum body temperature'], ax=axes[0])
+df_t = df[df['Have you had Covid`19 this year?'] == 'Maybe'].dropna(subset=['Maximum body temperature'])
+sns.distplot(df_t['Maximum body temperature'], ax=axes[1])
