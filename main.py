@@ -13,7 +13,7 @@ df = pd.read_excel(
 print(df.head())
 
 
-# Function to transform date to datetime
+# Create function to transform date to datetime
 def parse(x):
     y = x.split()
     t = y[1][:8]
